@@ -1,7 +1,7 @@
 from sqlalchemy import Column,Integer,String,ARRAY,Boolean
 from .db import Base
 
-class Role(Base) :
+class UserRole(Base) :
   __tablename__ = "userroles"
 
   userrolesid = Column(Integer, primary_key=True,index=True)
@@ -17,5 +17,7 @@ class User(Base) :
     firstname = Column(String, nullable=True)
     userrolesid = Column(ARRAY(Integer))
     active = Column(Boolean,default=False,nullable=False)
+    password = Column(String(128))
+    
     #Base.metadata.create_all(bind=engine)
     

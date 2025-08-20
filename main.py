@@ -1,8 +1,14 @@
+from fastapi import FastAPI
+from app import models, db, api
 
-from fastapi import FastAPI 
-from app import db,models
 app = FastAPI()
 
-@app.get("/")
-async def index():
-    return{"message:" "Hi Kumar"} 
+# create tables
+models.Base.metadata.create_all(bind=db.engine)
+
+# include routes
+app.include_router(api.router)
+
+# @app.get("/")
+# async def index():
+#     return{"message:" "Hi Kumar"} 

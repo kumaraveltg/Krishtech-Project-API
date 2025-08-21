@@ -1,13 +1,3 @@
-# from pydantic import BaseModel
-# from . import db
-
-# class UserCreate(BaseModel):
-#     username: str
-#     password: str
-#     firstname: str
-#     userrolesid: int
-#     active: bool
-
 from pydantic import BaseModel
 from . import models, db
 from . import schema
@@ -26,7 +16,7 @@ class Role(RoleBase):
     #userrolesid: int
 
     class Config:
-        from_attributes = True
+       from_attributes = True
 
 
 # ----------------------------

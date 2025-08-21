@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from . import models, db
 from . import schema
+from typing import Optional
 
 # ----------------------------
 # Role schemas
@@ -13,7 +14,17 @@ class RoleCreate(RoleBase):
     pass
 
 class Role(RoleBase):
-    #userrolesid: int
+    userrolesid: int
+    rolename: str
+    active: bool
+    createdby: str
+    modifiedby: str
+
+class UpdateRole(RoleBase):
+    rolename: str
+    active: bool
+    modifiedby: str
+    cancel: Optional[str] = None
 
     class Config:
        from_attributes = True

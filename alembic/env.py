@@ -12,10 +12,11 @@ if config.config_file_name is not None:
 # Import your app's Base + models
 from app.db import Base
 import app.models
-
+import app.users
+from sqlmodel import SQLModel
 # Target metadata
 target_metadata = Base.metadata
-
+target_metadata = SQLModel.metadata
 
 def run_migrations_offline():
     context.configure(

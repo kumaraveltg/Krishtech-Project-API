@@ -1,5 +1,9 @@
 from sqlalchemy import Column,Integer,String,ARRAY,Boolean,DateTime,func,text
 from .db import Base
+from typing import List, Optional
+from sqlmodel import SQLModel, Field, Column
+from sqlalchemy.dialects.postgresql import ARRAY, INTEGER
+from pydantic import EmailStr
 
 class UserRole(Base) :
   __tablename__ = "userroles"
@@ -32,4 +36,16 @@ class User(Base) :
     password = Column(String(128))
     
     #Base.metadata.create_all(bind=engine)
-    
+
+
+
+# class Kusers(SQLModel, table=True):
+#     id: int | None = Field(default=None, primary_key=True)
+#     username: str = Field(index=True)
+#     password: str
+#     firstname: str
+#     emailid: EmailStr
+#     userroleids: Optional[List[int]] = Field(
+#         sa_column=Column(ARRAY(INTEGER))
+#     )
+#     active: bool = True  # default value

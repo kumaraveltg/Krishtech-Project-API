@@ -1,14 +1,23 @@
 from fastapi import FastAPI
 from app import models, db, api
+from sqlmodel import SQLModel
+from app.db_sqlmodel import engine
+from app.users import router as users_router
+
+
 
 app = FastAPI()
 
-# create tables
-models.Base.metadata.create_all(bind=db.engine)
+# Create tables at startup
+@app.on_event("startup")
+def on_startup():
+    SQLModel.metadata.create_all(engine)
 
-# include routes
+# include routers
 app.include_router(api.router)
+app.include_router(users_router)
 
+# Sample root endpoint
 # @app.get("/")
 # async def index():
-#     return{"message:" "Hi Kumar"} 
+#     return {"message": "Hi Kumar"}

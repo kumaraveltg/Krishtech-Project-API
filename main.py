@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app import models, db, api
 from sqlmodel import SQLModel
-from app.db_sqlmodel import engine
+from app.db_sqlmodel import engine,get_session
 from app.users import router as users_router
 
 

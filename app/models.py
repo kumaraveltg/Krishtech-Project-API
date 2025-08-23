@@ -1,9 +1,10 @@
 from sqlalchemy import Column,Integer,String,ARRAY,Boolean,DateTime,func,text
 from .db import Base
 from typing import List, Optional
-from sqlmodel import SQLModel, Field, Column
+from sqlmodel import Session, select,SQLModel,Field,Column,create_engine
 from sqlalchemy.dialects.postgresql import ARRAY, INTEGER
 from pydantic import EmailStr
+from datetime import datetime
 
 class UserRole(Base) :
   __tablename__ = "userroles"
@@ -49,3 +50,5 @@ class User(Base) :
 #         sa_column=Column(ARRAY(INTEGER))
 #     )
 #     active: bool = True  # default value
+# Model
+
